@@ -110,11 +110,13 @@ currentConversationId = urlParams.get('conversationid');
 currentInteractionType = urlParams.get('interactiontype');
 currentWorkitemId = urlParams.get('workitemid');
 
-const redirectUri =  'https://o5rp5t.github.io/OPAW01/index.html' ;
+const redirectUri =  'https://o5rp5t.github.io/OPAW01' ;
 let stateunique = JSON.stringify({ conversationid:currentConversationId,
 											         workitemid: currentWorkitemId,
 										                 interactiontype:currentInteractionType}) ;
 client.setEnvironment('mypurecloud.ie');
+
+console.log("OPA - pre loginPKCEGrant");	
 client.loginPKCEGrant(
     'fa748db1-f7bd-4db0-8e33-9edb40fd5999', redirectUri, {state: stateunique })
 
@@ -174,7 +176,8 @@ conversationsApi.getConversation(currentConversationId)
  
 
 });
-	
+
+	console.log("OPA - post loginPKCEGrant");
 	
     let searchCustData = function () {
     let elem = document.createElement("script");
